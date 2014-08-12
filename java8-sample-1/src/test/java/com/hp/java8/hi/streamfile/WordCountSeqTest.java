@@ -1,10 +1,12 @@
-package com.hp.java8.newfeatures.streams;
+package com.hp.java8.hi.streamfile;
 
 import static org.junit.Assert.*;
 
 import java.io.StringReader;
 
 import org.junit.Test;
+
+import com.hp.java8.hi.streamfile.WordCountSeq;
 
 public class WordCountSeqTest {
 
@@ -14,9 +16,9 @@ public class WordCountSeqTest {
     public void testWordCount() throws Exception {
         StringReader sr = new StringReader("  Ahoj odkial ides\nA \n ty?");
         wc.initialize(sr);
-        System.out.println(Thread.currentThread().getName() + " - " + Thread.currentThread().getId());
-
-        assertEquals(1, wc.wordCount("Ahoj"));
+        
+        long wordCount = wc.wordCount();
+		assertEquals(5, wordCount);
         Thread.sleep(10);
     }
 

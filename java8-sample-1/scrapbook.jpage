@@ -1,1 +1,0 @@
-"  Ahoj odkial ides".trim().split("\\W+")

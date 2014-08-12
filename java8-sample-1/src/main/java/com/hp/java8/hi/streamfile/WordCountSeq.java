@@ -1,4 +1,4 @@
-package com.hp.java8.newfeatures.streams;
+package com.hp.java8.hi.streamfile;
 
 import java.io.BufferedReader;
 import java.io.Reader;
@@ -17,33 +17,32 @@ public class WordCountSeq {
 
     private boolean parsed = false;
 
+	private long count;
+
     public void initialize(Reader reader) {
         this.reader = reader;
         parsed = false;
     }
 
-    public long wordCount(String string) {
+    public long wordCount() {
         if (!parsed) {
             doParse();
         }
 
-        return 1;
+        return count;
     }
 
     private void doParse() {
 
-        Stream<String> lines = new BufferedReader(reader).lines();
-        Stream<String> words = lines.flatMap(line -> {
-            return Stream.of(line.trim().split("\\s+"));
-        });
-
-        long count = words.count();
-        System.out.println(count);
-
+		count = new BufferedReader(reader).lines().flatMap(line -> {
+			return Stream.of(line.trim().split("\\s+"));
+		}).count();
     }
+    
+    
+    /** ==================== internal stuff only ==================== */
 
     public static void main(String[] args) {
-        tutSeq();
         tutSeq();
         tutPar();
         tutPar();
