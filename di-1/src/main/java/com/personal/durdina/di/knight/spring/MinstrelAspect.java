@@ -8,11 +8,12 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class MinstrelAspect {
 
-    @Pointcut("execution(* *.embarkOnQuest(..))")
-    public void businessService() {}
-    
-    @Around("com.personal.durdina.di.knight.spring.MinstrelAspect.businessService()")
-    public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
+    @Pointcut("execution(* com.personal.durdina.di.knight.spring.*.*(..))")
+    public void anyPublicMethod() {
+    }
+
+    @Around("com.personal.durdina.di.knight.spring.MinstrelAspect.anyPublicMethod() && @annotation(minstrelIntercepted)")
+    public Object doBasicProfiling(ProceedingJoinPoint pjp, MinstrelIntercepted minstrelIntercepted) throws Throwable {
 
         Knight knight = (Knight) pjp.getThis();
 
@@ -22,5 +23,5 @@ public class MinstrelAspect {
 
         return rtn;
     }
-    
+
 }

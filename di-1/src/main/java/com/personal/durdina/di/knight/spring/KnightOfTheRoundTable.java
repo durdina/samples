@@ -8,6 +8,7 @@ public class KnightOfTheRoundTable implements Knight {
         this.name = name;
     }
 
+    @MinstrelIntercepted
     public Object embarkOnQuest() throws QuestFailedException {
         return quest.embark();
     }

@@ -1,4 +1,4 @@
-package com.personal.durdina.di.knight.guice;
+package com.personal.durdina.di.knight.spring;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
