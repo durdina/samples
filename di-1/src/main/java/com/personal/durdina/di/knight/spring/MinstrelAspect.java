@@ -1,10 +1,13 @@
 package com.personal.durdina.di.knight.spring;
 
+import javax.inject.Named;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
+@Named
 @Aspect
 public class MinstrelAspect {
 

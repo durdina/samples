@@ -1,11 +1,19 @@
 package com.personal.durdina.di.knight.spring;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Named
 public class KnightOfTheRoundTable implements Knight {
+
     private String name;
+
     private Quest quest;
 
-    public KnightOfTheRoundTable(String name) {
+    @Inject
+    public KnightOfTheRoundTable(@Name String name, Quest quest) {
         this.name = name;
+        this.quest = quest;
     }
 
     @MinstrelIntercepted
