@@ -19,11 +19,10 @@ public class KnightConfig {
     public Quest quest() {
         return new HolyGrailQuest();
     }
-
+    
     @Bean
-    // @Advice("execution(* *.embarkOnQuest(..))")
-    public MinstrelInterceptor minstelAdvice() {
-        return new MinstrelInterceptor();
+    public MinstrelAspect minstrelAspect() {
+        return new MinstrelAspect();
     }
 
     public static void main(String[] args) throws Exception {
