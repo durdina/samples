@@ -1,4 +1,5 @@
-package com.personal.durdina.di.knight.guice;
+package com.personal.durdina.di.knight.naive;
+
 
 public class HolyGrailQuest implements Quest {
 
@@ -9,5 +10,4 @@ public class HolyGrailQuest implements Quest {
         System.out.println("Embarking on quest");
         return new HolyGrail();
     }
-    
 }

@@ -17,6 +17,7 @@ import com.google.inject.TypeLiteral;
 
 @SuppressWarnings("serial")
 public class KnightModule extends AbstractModule {
+    
     public void configure() {
 
         bindConstant().annotatedWith(Name.class).to("Bedivere");
@@ -36,7 +37,7 @@ public class KnightModule extends AbstractModule {
 
     @Inject
     @Provides
-    Set<Knight> friendlyKnights(final Knight knight) {
+    Set<Knight> knightCompany(final Knight knight) {
         return new HashSet<Knight>() {{
             add(knight);
             add(new KnightOfTheRoundTable("Lancelot"));
@@ -47,5 +48,6 @@ public class KnightModule extends AbstractModule {
         Injector injector = Guice.createInjector(new KnightModule());
         Knight knight = injector.getInstance(Knight.class);
         knight.embarkOnQuest();
+        knight.celebrate();
     }
 }
