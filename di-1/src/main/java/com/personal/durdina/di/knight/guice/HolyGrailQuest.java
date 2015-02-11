@@ -1,13 +1,26 @@
 package com.personal.durdina.di.knight.guice;
 
-public class HolyGrailQuest implements Quest {
+import java.util.Set;
+
+import com.google.inject.Inject;
+
+public class HolyGrailQuest implements Quest<HolyGrail> {
+
+    @Inject
+    private Set<String> kings;
 
     public HolyGrailQuest() {
     }
 
-    public Object embark() throws GrailNotFoundException {
-        System.out.println("Embarking on quest");
+    public HolyGrail embark() throws GrailNotFoundException {
+        System.out.println("Embarking on quest in the name of " + kings);
         return new HolyGrail();
     }
-    
+
+    @Override
+    public Knight fight(Knight challenger, Knight challenged) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
