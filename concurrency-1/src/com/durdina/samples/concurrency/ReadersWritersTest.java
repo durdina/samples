@@ -12,19 +12,19 @@ public class ReadersWritersTest {
 	@Test
 	public void test() throws Exception {
 
-		Concurrency c = new Concurrency();
+		Resource resource = new Resource();
 		ExecutorService pool = Executors.newFixedThreadPool(50);
 		
 		int N = 1000;
 		CountDownLatch doneSignal = new CountDownLatch(N);
 		
 		for (int i = 0; i < N; i++) {
-			pool.execute(new Worker(c, doneSignal));
+			pool.execute(new Worker(resource, doneSignal));
 		}
 		
 		doneSignal.await();
 		
-		Integer[] all = c.readAll();
+		Integer[] all = resource.readAll();
 		System.out.println("Written " + all.length + " items");
 		
 		
@@ -37,23 +37,23 @@ public class ReadersWritersTest {
 
 	static class Worker implements Runnable {
 
-		private Concurrency c;
+		private Resource resource;
 		private CountDownLatch doneSignal;
 
-		public Worker(Concurrency c, CountDownLatch doneSignal) {
-			this.c = c;
+		public Worker(Resource resource, CountDownLatch doneSignal) {
+			this.resource = resource;
 			this.doneSignal = doneSignal;
 		}
 
 		@Override
 		public void run() {
 
-			int l = c.readHighest();
-			int l2 = c.readHighest();
+			int l = resource.readHighest();
+			int l2 = resource.readHighest();
 			
 			if (l2 == l) {
 				System.out.print((l+1) +  ", ");
-				c.write(l+1);
+				resource.write(l+1);
 			} else {
 				System.out.println("NOT INCREMENTING at " + l);
 			}

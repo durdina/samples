@@ -2,7 +2,7 @@ package com.durdina.samples.concurrency;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Concurrency {
+public class Resource {
 
 	List<Integer> nums = new ArrayList<Integer>();
 
