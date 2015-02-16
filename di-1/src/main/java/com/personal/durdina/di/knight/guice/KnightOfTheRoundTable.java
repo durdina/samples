@@ -7,18 +7,19 @@ import com.google.inject.Inject;
 public class KnightOfTheRoundTable implements Knight {
 
     private String name;
-    private Quest<?> quest;
 
-    @Inject
-    private Blacksmith<Iron> armor;
+    private Quest<?> quest;
 
     @Inject
     private Set<Knight> knightCompany;
 
+    private Sword sword;
+
     /** Standard injections - constructor injection (with qualifier) */
     @Inject
-    public KnightOfTheRoundTable(@Name String name) {
+    public KnightOfTheRoundTable(@Name String name, Blacksmith<Sword> blacksmith) {
         this.name = name;
+        this.sword = blacksmith.make(name);
     }
 
     /** Standard injections - setter injection */
@@ -36,6 +37,17 @@ public class KnightOfTheRoundTable implements Knight {
     public Quest<?> embarkOnQuest() throws QuestFailedException {
         quest.embark();
         return quest;
+    }
+
+    @Override
+    public boolean attack(Knight challenged) {
+        boolean sucessfullyDefended = challenged.defendAttackBy(sword);
+        return !sucessfullyDefended;
+    }
+
+    @Override
+    public boolean defendAttackBy(Weapon weapon) {
+        return this.sword.weight() * Math.random() > weapon.weight() * Math.random();
     }
 
     @Override

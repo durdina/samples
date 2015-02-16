@@ -8,4 +8,8 @@ public interface Knight {
 
     void celebrate();
 
+    boolean attack(Knight challenged);
+
+    boolean defendAttackBy(Weapon weapon);
+
 }

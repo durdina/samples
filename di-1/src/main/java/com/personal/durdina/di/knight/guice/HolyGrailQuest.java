@@ -18,9 +18,14 @@ public class HolyGrailQuest implements Quest<HolyGrail> {
     }
 
     @Override
-    public Knight fight(Knight challenger, Knight challenged) {
-        // TODO Auto-generated method stub
-        return null;
+    public Knight fight(Knight challenger, Knight... challenged) {
+        for (Knight challengedKnight : challenged) {
+            boolean won = challenger.attack(challengedKnight);
+            if (!won) {
+                return challengedKnight;
+            }
+        }
+        return challenger;
     }
 
 }

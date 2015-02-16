@@ -1,9 +1,11 @@
 package com.personal.durdina.di.knight.spring;
 
 public interface Knight {
-    public Object embarkOnQuest() throws QuestFailedException;
 
-    public String getName();
+    Object embarkOnQuest() throws QuestFailedException;
 
-    public void celebrate();
+    String getName();
+
+    void celebrate();
+
 }

@@ -5,8 +5,8 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(HolyGrailQuest.class)
 public interface Quest<TROPHY> {
 
-    public TROPHY embark() throws QuestFailedException;
+    TROPHY embark() throws QuestFailedException;
 
-    public Knight fight(Knight challenger, Knight challenged);
+    Knight fight(Knight challenger, Knight... challenged);
 
 }

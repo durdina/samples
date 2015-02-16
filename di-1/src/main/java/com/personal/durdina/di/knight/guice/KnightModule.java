@@ -39,8 +39,9 @@ public class KnightModule extends AbstractModule {
         return new HashSet<Knight>() {
 
             {
+                // TODO mdurdina Feb 16, 2015: this is not ok
                 add(knight);
-                add(new KnightOfTheRoundTable("Lancelot"));
+//                add(new KnightOfTheRoundTable("Lancelot"));
             }
         };
     };
@@ -54,10 +55,6 @@ public class KnightModule extends AbstractModule {
         Quest<?> quest = knight.embarkOnQuest();
         Knight winner = quest.fight(knight, enemy);
         winner.celebrate();
-        
-//        if (quest.isCompleted()) {
-//            winner.takeTrophy(quest.getTrophy());
-//        }
 
     }
 }
