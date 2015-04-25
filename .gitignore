@@ -1,1 +1,7 @@
-concurrency-1/bin
+bin
+.idea
+.classpath
+.project
+.settings
+*.iml
+out
