@@ -12,4 +12,4 @@ import com.google.inject.BindingAnnotation;
 @Target({ ElementType.FIELD, ElementType.METHOD, ElementType.TYPE, ElementType.PARAMETER })
 @Documented
 @BindingAnnotation
-public @interface Name {}
+public @interface Principality {}

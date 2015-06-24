@@ -13,7 +13,7 @@ public class HolyGrailQuest implements Quest<HolyGrail> {
     }
 
     public HolyGrail embark() throws GrailNotFoundException {
-        System.out.println("Embarking on quest in the name of " + kings);
+        System.out.println("Embarking on quest in the name for " + kings);
         return new HolyGrail();
     }
 

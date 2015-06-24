@@ -7,19 +7,22 @@ import com.google.inject.Inject;
 public class KnightOfTheRoundTable implements Knight {
 
     private String name;
-
-    private Quest<?> quest;
+    
+    @Inject
+    @Principality
+    private  String principality;
 
     @Inject
     private Set<Knight> knightCompany;
 
-    private Sword sword;
+    private Quest<?> quest;
+    
+    private Weapon weapon;
 
     /** Standard injections - constructor injection (with qualifier) */
     @Inject
-    public KnightOfTheRoundTable(@Name String name, Blacksmith<Sword> blacksmith) {
+    public KnightOfTheRoundTable(String name) {
         this.name = name;
-        this.sword = blacksmith.make(name);
     }
 
     /** Standard injections - setter injection */
@@ -32,6 +35,12 @@ public class KnightOfTheRoundTable implements Knight {
         return name;
     }
 
+
+    @Override
+    public void arm(Weapon weapon) {
+        this.weapon = weapon;
+    }
+    
     @Override
     @MinstrelIntercepted
     public Quest<?> embarkOnQuest() throws QuestFailedException {
@@ -41,25 +50,27 @@ public class KnightOfTheRoundTable implements Knight {
 
     @Override
     public boolean attack(Knight challenged) {
-        boolean sucessfullyDefended = challenged.defendAttackBy(sword);
+        boolean sucessfullyDefended = challenged.defendAttackBy(weapon);
         return !sucessfullyDefended;
     }
 
     @Override
     public boolean defendAttackBy(Weapon weapon) {
-        return this.sword.weight() * Math.random() > weapon.weight() * Math.random();
+        return this.weapon.weight() * Math.random() > weapon.weight() * Math.random();
     }
 
     @Override
     @MinstrelIntercepted
     public void celebrate() {
-        System.out.println("Celebration!");
-
+        System.out.println("Celebration held for our winner " + this.getName() + "!");
+        System.out.println("Your company is going to celebrate you:");
+            
         for (Knight knight : knightCompany) {
             if (knight != this) {
-                System.out.println("Sir " + knight.getName() + ", cheers my friend");
+                System.out.println("'I " + knight.getName() + " bow before your bravery " + this.getName() + "'");
             }
         }
     }
+
 
 }

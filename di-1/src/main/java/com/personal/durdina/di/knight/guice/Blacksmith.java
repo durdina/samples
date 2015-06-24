@@ -1,8 +1,9 @@
 package com.personal.durdina.di.knight.guice;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
-public class Blacksmith<T extends Weapon> {
+public class Blacksmith<T extends Weapon> implements Provider<T> {
 
     private T weapon;
 
@@ -11,8 +12,13 @@ public class Blacksmith<T extends Weapon> {
         this.weapon = weapon;
     }
 
+    @Override
+    public T get() {
+        return make();
+    }
+
     @SuppressWarnings("unchecked")
-    public T make(String name) {
+    protected T make() {
         try {
             return (T) weapon.clone();
         } catch (Exception e) {

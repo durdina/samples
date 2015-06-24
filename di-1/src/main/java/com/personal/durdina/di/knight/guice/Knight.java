@@ -6,10 +6,12 @@ public interface Knight {
 
     String getName();
 
-    void celebrate();
+    void arm(Weapon weapon);
 
     boolean attack(Knight challenged);
 
     boolean defendAttackBy(Weapon weapon);
+
+    void celebrate();
 
 }
