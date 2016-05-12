@@ -1,4 +1,4 @@
-package helloworld
+package org.personal.durdo.helloworld
 
 import java.text.DateFormat._
 import java.util.Date

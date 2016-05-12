@@ -1,4 +1,4 @@
-package helloworld
+package org.personal.durdo.helloworld
 
 /**
   * Created by michaldurdina on 24/09/14.
