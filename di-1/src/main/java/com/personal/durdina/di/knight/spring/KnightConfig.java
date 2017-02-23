@@ -15,6 +15,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class KnightConfig {
 
+    // TODO: 2017-01-10 Use Qualifier (both Config and @Inject) vs Bean(name) on config + Named on @Inject
+
     @Bean
     @Name
     public String nameConstant() {
