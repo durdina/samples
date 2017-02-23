@@ -14,7 +14,8 @@ public class Start {
         String webappDirLocation = "src/main/webapp/";
         String tomcatWorkDir = "target/";
         Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8080);
+        int port = 8080;
+        tomcat.setPort(port);
 
         System.out.println("configuring tomcat work dir: " +
                 new File("./" + tomcatWorkDir).getAbsolutePath());
@@ -24,6 +25,7 @@ public class Start {
         tomcat.addWebapp("", new File(webappDirLocation).getAbsolutePath());
 
         tomcat.start();
+        System.out.println(String.format("Open the app at http://localhost:%d", port));
         tomcat.getServer().await();
     }
 }
