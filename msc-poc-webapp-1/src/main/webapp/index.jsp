@@ -15,6 +15,8 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-</div><h2>Hello World!</h2>
+<jsp:useBean id="model" class="com.personal.durdinam.msc.sample.SampleModel"/>
+
+</div><h2>Hello <jsp:getProperty name="model" property="userName"/>!</h2>
 </body>
 </html>

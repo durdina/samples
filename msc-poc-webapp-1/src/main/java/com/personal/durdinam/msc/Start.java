@@ -1,4 +1,4 @@
-package com.amazon.msc.poc;
+package com.personal.durdinam.msc;
 
 import java.io.File;
 
@@ -14,7 +14,7 @@ public class Start {
         String webappDirLocation = "src/main/webapp/";
         String tomcatWorkDir = "target/";
         Tomcat tomcat = new Tomcat();
-        int port = 8080;
+        int port = 8083;
         tomcat.setPort(port);
 
         System.out.println("configuring tomcat work dir: " +
