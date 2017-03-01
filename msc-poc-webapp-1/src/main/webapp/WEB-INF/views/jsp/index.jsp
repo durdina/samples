@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Msc Poc Web Application</title>
+  <title>${title}</title>
 </head>
 <body>
 <div class="ads-in-post hide_if_width_less_800">
@@ -15,8 +15,7 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<jsp:useBean id="model" class="com.personal.durdinam.msc.sample.SampleModel"/>
-
-</div><h2>Hello <jsp:getProperty name="model" property="userName"/>!</h2>
+</div><h2>Hello ${hw.userName}!</h2>
+<monospaced>(${title})</monospaced>
 </body>
 </html>
