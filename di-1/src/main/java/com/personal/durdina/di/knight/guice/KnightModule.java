@@ -1,19 +1,22 @@
 package com.personal.durdina.di.knight.guice;
 
-import static com.google.inject.matcher.Matchers.annotatedWith;
-import static com.google.inject.matcher.Matchers.any;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Provides;
 import com.google.inject.TypeLiteral;
+import com.google.inject.assistedinject.FactoryModuleBuilder;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.google.inject.matcher.Matchers.annotatedWith;
+import static com.google.inject.matcher.Matchers.any;
 
 // TODO mdurdina Feb 11, 2015: add sample case for expressions
 // TODO mdurdina Feb 11, 2015: add sample case for having plug-ins
@@ -34,6 +37,11 @@ public class KnightModule extends AbstractModule {
         // Providers - create new instance for each request using "supplied provider - blacksmith"
         bind(Axe.class).toProvider(new Blacksmith<Axe>(new Axe()));
         bind(Sword.class).toProvider(new Blacksmith<Sword>(new Sword()));
+
+        // Assisted injection // TODO: Clean up payment and others
+        install(new FactoryModuleBuilder()
+                .implement(Payment.class, RealPayment.class)
+                .build(PaymentFactory.class));
     }
 
     @Provides
@@ -47,7 +55,11 @@ public class KnightModule extends AbstractModule {
         Injector injector = Guice.createInjector(new KnightModule());
         Knight knight = injector.getInstance(Key.get(Knight.class, Bedivere.class));
         Knight enemy = injector.getInstance(Key.get(Knight.class, Lancelot.class));
-        
+
+        PaymentFactory paymentFactory = injector.getInstance(Key.get(PaymentFactory.class));
+        Payment payment = paymentFactory.create(new Date(), BigDecimal.TEN);
+        System.out.println(payment.toString());
+
         // arm knights
         knight.arm(injector.getInstance(Key.get(Axe.class)));
         enemy.arm(injector.getInstance(Key.get(Sword.class)));
