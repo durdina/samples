@@ -20,6 +20,8 @@ import static com.google.inject.matcher.Matchers.any;
 
 // TODO mdurdina Feb 11, 2015: add sample case for expressions
 // TODO mdurdina Feb 11, 2015: add sample case for having plug-ins
+// TODO: add dependencies between modules (Spring can do that, Guice too, but not inside configure())
+// TODO mdurdina Mar 28, 2018: for constructor injection the annotations for interceptors (i.e. metrics) have no effect since annotations are not processes
 public class KnightModule extends AbstractModule {
 
     @Override
