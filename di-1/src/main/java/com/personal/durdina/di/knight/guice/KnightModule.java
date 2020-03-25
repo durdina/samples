@@ -29,7 +29,7 @@ public class KnightModule extends AbstractModule {
 
         bindConstant().annotatedWith(Principality.class).to("Kingdom of King Arthur");
 
-        bind(new TypeLiteral<Set<String>>() {}).toInstance(Collections.singleton("Ds"));
+        bind(new TypeLiteral<Set<String>>() {}).toInstance(Collections.singleton("King Arthur"));
 
         bind(Knight.class).annotatedWith(Bedivere.class).toInstance(new KnightOfTheRoundTable("Bedivere"));
         bind(Knight.class).annotatedWith(Lancelot.class).toInstance(new KnightOfTheRoundTable("Lancelot"));
@@ -40,7 +40,7 @@ public class KnightModule extends AbstractModule {
         bind(Axe.class).toProvider(new Blacksmith<Axe>(new Axe()));
         bind(Sword.class).toProvider(new Blacksmith<Sword>(new Sword()));
 
-        // Assisted injection // TODO: Clean up payment and others
+        // Assisted injection // TODO: Clean up assisted injection example
         install(new FactoryModuleBuilder()
                 .implement(Payment.class, RealPayment.class)
                 .build(PaymentFactory.class));
@@ -49,7 +49,7 @@ public class KnightModule extends AbstractModule {
     @Provides
     Set<Knight> knightCompany(@Bedivere Knight knight1, @Lancelot Knight knight2) {
         // TODO mdurdina Apr 13, 2015: add guava
-        return Collections.unmodifiableSet(new HashSet<Knight>(Arrays.asList(knight1, knight2)));
+        return Collections.unmodifiableSet(new HashSet<>(Arrays.asList(knight1, knight2)));
     };
 
     public static void main(String[] args) throws Exception {

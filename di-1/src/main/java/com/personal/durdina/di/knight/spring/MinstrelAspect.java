@@ -1,11 +1,11 @@
 package com.personal.durdina.di.knight.spring;
 
-import javax.inject.Named;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+
+import javax.inject.Named;
 
 @Named
 @Aspect
@@ -20,9 +20,9 @@ public class MinstrelAspect {
 
         Knight knight = (Knight) pjp.getThis();
 
-        System.out.println("La la la, Sir " + knight.getName() + " is so brave!");
+        System.out.println(String.format("[Intercepted] La la la, Sir %s is so brave!", knight.getName()));
         Object rtn = pjp.proceed();
-        System.out.println("" + "Tee-he-he, he did " + pjp.getSignature().getName());
+        System.out.println(String.format("[Intercepted] Tee-he-he, Sir %s really did %s.", knight.getName(), pjp.getSignature().getName()));
 
         return rtn;
     }

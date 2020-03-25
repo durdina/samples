@@ -9,9 +9,6 @@ public class HolyGrailQuest implements Quest<HolyGrail> {
     @Inject
     private Set<String> kings;
 
-    public HolyGrailQuest() {
-    }
-
     public HolyGrail embark() throws GrailNotFoundException {
         System.out.println("Embarking on quest in the name for " + kings);
         return new HolyGrail();

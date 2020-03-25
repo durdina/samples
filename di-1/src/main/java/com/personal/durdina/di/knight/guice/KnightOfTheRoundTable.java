@@ -10,7 +10,7 @@ public class KnightOfTheRoundTable implements Knight {
     
     @Inject
     @Principality
-    private  String principality;
+    private String principality;
 
     @Inject
     private Set<Knight> knightCompany;
@@ -35,7 +35,6 @@ public class KnightOfTheRoundTable implements Knight {
         return name;
     }
 
-
     @Override
     public void arm(Weapon weapon) {
         this.weapon = weapon;
@@ -50,17 +49,18 @@ public class KnightOfTheRoundTable implements Knight {
 
     @Override
     public boolean attack(Knight challenged) {
-        boolean sucessfullyDefended = challenged.defendAttackBy(weapon);
-        return !sucessfullyDefended;
+        Weapon myWeapon = this.weapon;
+        boolean successfullyDefended = challenged.defendAttackBy(myWeapon);
+        return !successfullyDefended;
     }
 
     @Override
     public boolean defendAttackBy(Weapon weapon) {
-        return this.weapon.weight() * Math.random() > weapon.weight() * Math.random();
+        Weapon myWeapon = this.weapon;
+        return myWeapon.weight() * Math.random() > weapon.weight() * Math.random();
     }
 
     @Override
-    @MinstrelIntercepted
     public void celebrate() {
         System.out.println("Celebration held for our winner " + this.getName() + "!");
         System.out.println("Your company is going to celebrate you:");
@@ -71,6 +71,5 @@ public class KnightOfTheRoundTable implements Knight {
             }
         }
     }
-
 
 }
