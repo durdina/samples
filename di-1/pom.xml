@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<guiceVersion>4.0</guiceVersion>
-		<org.springframework.version>4.1.4.RELEASE</org.springframework.version>
+		<org.springframework.version>4.3.30.RELEASE</org.springframework.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
